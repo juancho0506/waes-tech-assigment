@@ -1,7 +1,7 @@
-package com.waes.techassigment.main.com.waes.techassigment.datadiff.service;
+package com.waes.techassigment.datadiff.service;
 
-import com.waes.techassigment.main.com.waes.techassigment.datadiff.model.DiffDataCompareResultDTO;
-import com.waes.techassigment.main.com.waes.techassigment.datadiff.persistence.entity.DiffData;
+import com.waes.techassigment.datadiff.model.DiffDataCompareResultDTO;
+import com.waes.techassigment.datadiff.persistence.entity.DiffData;
 
 import java.util.Optional;
 

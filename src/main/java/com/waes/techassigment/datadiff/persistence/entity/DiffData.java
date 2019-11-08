@@ -1,4 +1,4 @@
-package com.waes.techassigment.main.com.waes.techassigment.datadiff.persistence.entity;
+package com.waes.techassigment.datadiff.persistence.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

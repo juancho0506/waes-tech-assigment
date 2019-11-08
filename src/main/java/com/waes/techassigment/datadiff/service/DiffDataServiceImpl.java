@@ -1,8 +1,8 @@
-package com.waes.techassigment.main.com.waes.techassigment.datadiff.service;
+package com.waes.techassigment.datadiff.service;
 
-import com.waes.techassigment.main.com.waes.techassigment.datadiff.model.DiffDataCompareResultDTO;
-import com.waes.techassigment.main.com.waes.techassigment.datadiff.persistence.entity.DiffData;
-import com.waes.techassigment.main.com.waes.techassigment.datadiff.persistence.repository.DiffDataRepository;
+import com.waes.techassigment.datadiff.model.DiffDataCompareResultDTO;
+import com.waes.techassigment.datadiff.persistence.entity.DiffData;
+import com.waes.techassigment.datadiff.persistence.repository.DiffDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

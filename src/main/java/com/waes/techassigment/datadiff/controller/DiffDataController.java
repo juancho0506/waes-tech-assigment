@@ -1,13 +1,13 @@
-package com.waes.techassigment.main.com.waes.techassigment.datadiff.controller;
+package com.waes.techassigment.datadiff.controller;
 
-import com.waes.techassigment.main.com.waes.techassigment.datadiff.exceptions.IncorrectDataSetupException;
-import com.waes.techassigment.main.com.waes.techassigment.datadiff.exceptions.NoDiffDataFoundException;
-import com.waes.techassigment.main.com.waes.techassigment.datadiff.model.DiffDataCompareResultDTO;
-import com.waes.techassigment.main.com.waes.techassigment.datadiff.model.DiffDataResponseV1;
-import com.waes.techassigment.main.com.waes.techassigment.datadiff.model.DiffDataSaveBodyV1;
-import com.waes.techassigment.main.com.waes.techassigment.datadiff.model.DiffDataSaveResponseV1;
-import com.waes.techassigment.main.com.waes.techassigment.datadiff.persistence.entity.DiffData;
-import com.waes.techassigment.main.com.waes.techassigment.datadiff.service.DiffDataService;
+import com.waes.techassigment.datadiff.exceptions.IncorrectDataSetupException;
+import com.waes.techassigment.datadiff.exceptions.NoDiffDataFoundException;
+import com.waes.techassigment.datadiff.model.DiffDataCompareResultDTO;
+import com.waes.techassigment.datadiff.model.DiffDataResponseV1;
+import com.waes.techassigment.datadiff.model.DiffDataSaveBodyV1;
+import com.waes.techassigment.datadiff.model.DiffDataSaveResponseV1;
+import com.waes.techassigment.datadiff.persistence.entity.DiffData;
+import com.waes.techassigment.datadiff.service.DiffDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

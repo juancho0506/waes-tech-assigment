@@ -1,4 +1,4 @@
-package com.waes.techassigment.main.com.waes.techassigment.datadiff.exceptions;
+package com.waes.techassigment.datadiff.exceptions;
 
 public class NoDiffDataFoundException extends RuntimeException{
     public NoDiffDataFoundException() {

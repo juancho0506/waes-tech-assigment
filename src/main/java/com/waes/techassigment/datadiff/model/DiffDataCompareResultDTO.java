@@ -1,4 +1,4 @@
-package com.waes.techassigment.main.com.waes.techassigment.datadiff.model;
+package com.waes.techassigment.datadiff.model;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
-package com.waes.techassigment.main.com.waes.techassigment.datadiff.persistence.repository;
+package com.waes.techassigment.datadiff.persistence.repository;
 
-import com.waes.techassigment.main.com.waes.techassigment.datadiff.persistence.entity.DiffData;
+import com.waes.techassigment.datadiff.persistence.entity.DiffData;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
-package com.waes.techassigment.main.com.waes.techassigment.datadiff.controller;
+package com.waes.techassigment.datadiff.controller;
 
-import com.waes.techassigment.main.com.waes.techassigment.datadiff.exceptions.IncorrectDataSetupException;
-import com.waes.techassigment.main.com.waes.techassigment.datadiff.exceptions.NoDiffDataFoundException;
+import com.waes.techassigment.datadiff.exceptions.IncorrectDataSetupException;
+import com.waes.techassigment.datadiff.exceptions.NoDiffDataFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

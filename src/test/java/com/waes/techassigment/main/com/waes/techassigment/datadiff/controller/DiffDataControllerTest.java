@@ -1,10 +1,13 @@
 package com.waes.techassigment.main.com.waes.techassigment.datadiff.controller;
 
-import com.waes.techassigment.main.WaesTechAssigmentApplication;
-import com.waes.techassigment.main.com.waes.techassigment.datadiff.model.DiffDataSaveBodyV1;
+import com.waes.techassigment.datadiff.WaesTechAssigmentApplication;
+import com.waes.techassigment.datadiff.model.DiffDataSaveBodyV1;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
@@ -17,17 +20,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {WaesTechAssigmentApplication.class}, webEnvironment
         = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class DiffDataControllerTest {
 
     private static final String API_ROOT = "/v1/diff";
 
     @Test
+    @Order(1)
     void whenGetDiffData_with_id_no_records_thenNotFound() {
         Response response = RestAssured.get(API_ROOT + "/" + randomNumeric(1));
         assertEquals(HttpStatus.NOT_FOUND.value(), response.getStatusCode());
     }
 
     @Test
+    @Order(2)
     void whenGetDiffData_with_id_with_one_data_thenPreconditionFailed() {
         //Given
         final int id = 1;
@@ -37,6 +43,7 @@ class DiffDataControllerTest {
     }
 
     @Test
+    @Order(3)
     void createLeftDiffData_with_id_thenCreated() {
         DiffDataSaveBodyV1 data = generateRandonBodyWithValidBase64String();
         Response response = RestAssured.given()
@@ -48,6 +55,7 @@ class DiffDataControllerTest {
     }
 
     @Test
+    @Order(4)
     void createRightDiffData_with_id_thenCreated() {
         DiffDataSaveBodyV1 data = generateRandonBodyWithValidBase64String();
         Response response = RestAssured.given()
@@ -59,6 +67,7 @@ class DiffDataControllerTest {
     }
 
     @Test
+    @Order(5)
     void whenGetDiffData_with_id_with_all_data_thenOk() {
         //Given
         final int id = 1;
@@ -69,6 +78,7 @@ class DiffDataControllerTest {
     }
 
     @Test
+    @Order(6)
     void createLeftDiffData_with_id_and_invalid_data_thenBadRequest() {
         DiffDataSaveBodyV1 data = generateRandonBodyWithInvalidBase64String();
         Response response = RestAssured.given()
