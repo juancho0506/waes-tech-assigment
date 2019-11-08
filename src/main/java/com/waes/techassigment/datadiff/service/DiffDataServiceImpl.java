@@ -39,16 +39,20 @@ public class DiffDataServiceImpl implements DiffDataService {
     @Override
     @Transactional
     public Integer saveRightData(final Integer id, String data) {
-        Optional<DiffData> actualRecord = repository.findById(id);
-        return actualRecord.map(record -> {
-            record.setDataRight(data);
-            return repository.save(record).getId();
-        }).orElseGet(() -> {
-            DiffData entity = new DiffData();
-            entity.setId(id);
-            entity.setDataRight(data);
-            return repository.save(entity).getId();
-        });
+        if(validateData(data)){
+            Optional<DiffData> actualRecord = repository.findById(id);
+            return actualRecord.map(record -> {
+                record.setDataRight(data);
+                return repository.save(record).getId();
+            }).orElseGet(() -> {
+                DiffData entity = new DiffData();
+                entity.setId(id);
+                entity.setDataRight(data);
+                return repository.save(entity).getId();
+            });
+        }else{
+            throw new IllegalArgumentException("Data is invalid or incorrect encoding.");
+        }
     }
 
     @Override
@@ -63,14 +67,34 @@ public class DiffDataServiceImpl implements DiffDataService {
         Optional<String> rightDataOpt = Optional.ofNullable(rightData);
         byte[] leftBytes = Base64.getDecoder().decode(leftDataOpt.orElse(""));
         byte[] rightBytes = Base64.getDecoder().decode(rightDataOpt.orElse(""));
+        StringBuffer message = new StringBuffer();
+        if (leftBytes.length != rightBytes.length) {
+            result.setResultMessage("Content are not equal in length: " + leftBytes.length + " -- " + rightBytes.length);
+            return result;
+        }
         if (Arrays.equals(leftBytes, rightBytes)) {
             result.setEqualSize(true);
-            result.setResultMessage("Content is equal.");
+            result.setContentEqual(true);
+            message.append("Content is equal in size and content.");
         } else {
             result.setEqualSize(false);
-            result.setResultMessage("Content is not equal.");
-        }
+            message.append("Content is equal size but not in content.");
+            int leftDataLenght = leftBytes.length;
+            int offset = Arrays.mismatch(leftBytes, rightBytes);
+            int maxLenght = leftDataLenght > 20 ? 20 : leftDataLenght;
+            int cont = 0;
+            if(offset>=0) {
+                for (int i=offset; i < maxLenght; i++) {
+                    if (leftBytes[i] != rightBytes[i]) {
+                        result.addDiffResult("Content has difference in offset: " + i + " -- " + leftBytes[i] + " ->" + rightBytes[i]);
+                        cont++;
+                    }
+                }
+            }
+            message.append("Total differences: " + cont);
 
+        }
+        result.setResultMessage(message.toString());
         return result;
     }
 
