@@ -75,7 +75,6 @@ class DiffDataControllerTest {
         createRigthDiffDataByIdWithApi(id);
         Response response = RestAssured.get(API_ROOT + "/" + id);
         assertEquals(HttpStatus.OK.value(), response.getStatusCode());
-
     }
 
     @Test

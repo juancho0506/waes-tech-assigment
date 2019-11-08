@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
@@ -66,6 +67,7 @@ public class DiffDataController {
         if (validDataSetup(data)) {
             Optional<DiffDataCompareResultDTO> dto = Optional.ofNullable(service.compare(data.getDataLeft(), data.getDataRight()));
             dataDiffResponse.setMessage(dto.map(dtoValue -> dtoValue.getResultMessage()).orElse("An error occured during the comparison of values."));
+            dataDiffResponse.setDifferences(dto.map(dtoValue -> dtoValue.getDiffResults()).orElse(new ArrayList<>()));
         } else {
             throw new IncorrectDataSetupException("Error validating data, pLease make sure you set left and right data correctly.");
         }

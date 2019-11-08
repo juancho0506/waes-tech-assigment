@@ -77,11 +77,14 @@ public class DiffDataServiceImpl implements DiffDataService {
             result.setContentEqual(true);
             message.append("Content is equal in size and content.");
         } else {
-            result.setEqualSize(false);
+            result.setEqualSize(true);
             message.append("Content is equal size but not in content.");
             int leftDataLenght = leftBytes.length;
             int offset = Arrays.mismatch(leftBytes, rightBytes);
-            int maxLenght = leftDataLenght > 20 ? 20 : leftDataLenght;
+            int maxLenght = 30;
+            if (offset > maxLenght){
+                maxLenght = offset;
+            }
             int cont = 0;
             if(offset>=0) {
                 for (int i=offset; i < maxLenght; i++) {
